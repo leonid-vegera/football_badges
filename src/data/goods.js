@@ -3,7 +3,7 @@ export const goods = [
     id: 'js01',
     category: 'books',
     name: 'Дэвид Флэнаган. JavaScript Карманный справочник',
-    poster: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80",
+    poster: "http://footballbadges.ru/upload/medialibrary/a78/dinamo-kiev2009.jpg",
     price: 750,
   },
   {
@@ -17,7 +17,7 @@ export const goods = [
     id: 'js03',
     category: 'books',
     name: 'Алекс Бэнкс и Ева Порселло. React и Redux',
-    poster: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80",
+    poster: "http://footballbadges.ru/upload/medialibrary/d19/dinamo-kiev2022.jpg",
     price: 950,
   },
   {
@@ -52,7 +52,7 @@ export const goods = [
     id: 'video03',
     category: 'video',
     name: 'Основы TypeScript',
-    poster: "https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=740&q=80",
+    poster: "http://footballbadges.ru/upload/medialibrary/56f/56fe44c3888e1d5436c84635b9d07965.jpg",
     price: 2250,
   },
   {

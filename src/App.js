@@ -6,6 +6,8 @@ import GoodsList from './components/GoodsList';
 import Search from './components/Search';
 
 import { goods } from './data/goods';
+import Header from './components/Header';
+import { Container } from '@mui/material';
 
 const App = () => {
   const [order, setOrder] = useState([]);
@@ -37,7 +39,9 @@ const App = () => {
       quantity = order[indexInOrder].quantity + 1;
 
       setOrder(order.map((item) => {
-          if (item.id !== goodsItem.id) return item;
+          if (item.id !== goodsItem.id) {
+            return item;
+          }
 
           return {
             id: item.id,
@@ -68,18 +72,21 @@ const App = () => {
   return (
     <div className='App'>
       <div className='container'>
-        <Search
-          value={search}
-          onChange={handleChange}
-        />
-        <GoodsList
-          goods={products}
-          setOrder={addToOrder}
-        />
-        <BasketList
-          order={order}
-          setOrder={removeFromOrder}
-        />
+        <Header/>
+        <Container sx={{ mt: '1rem' }}>
+          <Search
+            value={search}
+            onChange={handleChange}
+          />
+          <GoodsList
+            goods={products}
+            setOrder={addToOrder}
+          />
+          <BasketList
+            order={order}
+            setOrder={removeFromOrder}
+          />
+        </Container>
       </div>
     </div>
   );

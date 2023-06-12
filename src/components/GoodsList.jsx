@@ -1,5 +1,4 @@
 import React from 'react';
-
 import GoodsItem from './GoodsItem';
 import { Grid } from '@mui/material';
 

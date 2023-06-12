@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
-import { ShoppingBag } from '@mui/icons-material';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, IconButton, Typography } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const GoodsItem = ({ setOrder, poster, name, price, id }) => {
 
@@ -25,7 +25,7 @@ const GoodsItem = ({ setOrder, poster, name, price, id }) => {
         </CardContent>
         <CardActions>
           <Button
-            variant="contained"
+            variant="outlined"
             onClick={() =>
               setOrder({
                 id: id,
@@ -35,7 +35,9 @@ const GoodsItem = ({ setOrder, poster, name, price, id }) => {
             }
           >
             Купити
-            <ShoppingBag sx={{ ml: '10px' }}/>
+            <IconButton color="primary" aria-label="add to shopping cart">
+              <AddShoppingCartIcon/>
+            </IconButton>
           </Button>
         </CardActions>
       </Card>

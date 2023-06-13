@@ -25,7 +25,7 @@ const GoodsItem = ({ setOrder, poster, name, price, id }) => {
         </CardContent>
         <CardActions>
           <Button
-            variant="outlined"
+            variant="contained"
             onClick={() =>
               setOrder({
                 id: id,

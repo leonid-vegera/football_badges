@@ -15,7 +15,7 @@ const Basket = ({
       open={isOpened}
       onClose={closeCart}
     >
-      <List sx={{ minWidth: '400px' }}>
+      <List sx={{ width: '400px' }}>
         <ListItem>
           <ListItemButton>
             <ShoppingBasket/>

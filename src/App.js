@@ -6,7 +6,7 @@ import Search from './components/Search';
 
 import { goods } from './data/goods';
 import Header from './components/Header';
-import { Alert, Container, Snackbar } from '@mui/material';
+import { Container } from '@mui/material';
 import Basket from './components/Basket';
 import Snack from './components/Snack';
 

@@ -1,16 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
 
-import BasketList from './components/BasketList';
 import GoodsList from './components/GoodsList';
 import Search from './components/Search';
 
 import { goods } from './data/goods';
+import Header from './components/Header';
+import { Container } from '@mui/material';
+import Basket from './components/Basket';
+import Snack from './components/Snack';
 
 const App = () => {
   const [order, setOrder] = useState([]);
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState(goods);
+  const [isOpenCart, setOpenCart] = useState(false);
+  const [isOpenSnackbar, setOpenSnackbar] = useState(false);
 
   const handleChange = (e) => {
     if (!e.target.value) {
@@ -37,7 +42,9 @@ const App = () => {
       quantity = order[indexInOrder].quantity + 1;
 
       setOrder(order.map((item) => {
-          if (item.id !== goodsItem.id) return item;
+          if (item.id !== goodsItem.id) {
+            return item;
+          }
 
           return {
             id: item.id,
@@ -59,27 +66,44 @@ const App = () => {
         ],
       );
     }
+    setOpenSnackbar(true);
   };
 
   const removeFromOrder = (goodsItem) => {
     setOrder(order.filter((item) => item.id !== goodsItem));
   };
 
+  const closeSnackbar = (event) => {
+    if (event && event.target.textContent === 'Купити') {
+      return;
+    }
+    setOpenSnackbar(false);
+  }
+
   return (
     <div className='App'>
       <div className='container'>
-        <Search
-          value={search}
-          onChange={handleChange}
+        <Header
+          openCart={() => setOpenCart(true)}
+          orderLength={order.length}
         />
-        <GoodsList
-          goods={products}
-          setOrder={addToOrder}
-        />
-        <BasketList
+        <Container sx={{ mt: '1rem' }}>
+          <Search
+            value={search}
+            onChange={handleChange}
+          />
+          <GoodsList
+            goods={products}
+            setOrder={addToOrder}
+          />
+        </Container>
+        <Basket
           order={order}
-          setOrder={removeFromOrder}
+          removeFromOrder={removeFromOrder}
+          isOpened={isOpenCart}
+          closeCart={() => setOpenCart(false)}
         />
+        <Snack isOpen={isOpenSnackbar} close={closeSnackbar}/>
       </div>
     </div>
   );

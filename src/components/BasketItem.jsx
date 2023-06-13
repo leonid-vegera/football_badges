@@ -1,16 +1,17 @@
 import React from 'react';
+import { IconButton, ListItem, Typography } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const BasketItem = ({ setOrder, name, price, id, quantity }) => {
+const BasketItem = ({ removeFromOrder, name, price, id, quantity }) => {
   return (
-    <li className='list-group-item'>
-      {name} {price}pounds x{quantity}
-      <button
-        className='btn btn-primary'
-        onClick={() => setOrder(id)}
-      >
-        Delete from the basket
-      </button>
-    </li>
+    <ListItem>
+      <Typography variant='body1'>
+        {name} {price} грн x {quantity}
+      </Typography>
+      <IconButton aria-label="delete" onClick={() => removeFromOrder(id)}>
+        <DeleteIcon/>
+      </IconButton>
+    </ListItem>
   );
 };
 

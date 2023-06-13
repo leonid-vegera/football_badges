@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, IconButton, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Icon, IconButton, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const GoodsItem = ({ setOrder, poster, name, price, id }) => {
@@ -35,9 +35,7 @@ const GoodsItem = ({ setOrder, poster, name, price, id }) => {
             }
           >
             Купити
-            <IconButton color="primary" aria-label="add to shopping cart">
-              <AddShoppingCartIcon/>
-            </IconButton>
+            <AddShoppingCartIcon sx={{ ml: '5px' }}/>
           </Button>
         </CardActions>
       </Card>

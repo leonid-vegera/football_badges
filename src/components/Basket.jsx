@@ -7,7 +7,7 @@ const Basket = ({
                   isOpened,
                   order = [],
                   removeFromOrder,
-                  closeCart = Function.prototype
+                  closeCart
                 }) => {
   return (
     <Drawer
@@ -15,7 +15,7 @@ const Basket = ({
       open={isOpened}
       onClose={closeCart}
     >
-      <List sx={{ width: '400px' }}>
+      <List sx={{ minWidth: '400px' }}>
         <ListItem>
           <ListItemButton>
             <ShoppingBasket/>

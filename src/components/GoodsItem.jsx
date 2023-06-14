@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Icon, IconButton, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const GoodsItem = ({ setOrder, poster, name, price, id }) => {
@@ -9,7 +9,8 @@ const GoodsItem = ({ setOrder, poster, name, price, id }) => {
       <Card sx={{ height: '100%' }}>
         <CardMedia
           sx={{ height: 140 }}
-          image={poster}
+          component="img"
+          src={poster}
           title={name}
           alt={name}
         >

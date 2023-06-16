@@ -1,12 +1,12 @@
 import React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
 
 import GoodsList from './components/GoodsList';
 import Search from './components/Search';
 
-import { goods } from './data/goods';
+import {goods} from './data/goods';
 import Header from './components/Header';
-import { Container } from '@mui/material';
+import {Container} from '@mui/material';
 import Basket from './components/Basket';
 import Snack from './components/Snack';
 
@@ -81,13 +81,13 @@ const App = () => {
   }
 
   return (
-    <div className='App'>
-      <div className='container'>
+    <div className="App">
+      <div className="container">
         <Header
           openCart={() => setOpenCart(true)}
           orderLength={order.length}
         />
-        <Container sx={{ mt: '1rem' }}>
+        <Container sx={{mt: '1rem'}}>
           <Search
             value={search}
             onChange={handleChange}

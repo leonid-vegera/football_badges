@@ -1,8 +1,10 @@
 import React from 'react';
 import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import {Message} from '../services/lang/messages';
 
 const GoodsItem = ({setOrder, poster, name, price, id}) => {
+  const {Hryvna, Price, Buy} = Message.Service;
 
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -22,7 +24,7 @@ const GoodsItem = ({setOrder, poster, name, price, id}) => {
             {name}
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Ціна: {price} грн
+            {Price}: {price} {Hryvna}
           </Typography>
         </CardContent>
         <CardActions>
@@ -37,7 +39,7 @@ const GoodsItem = ({setOrder, poster, name, price, id}) => {
               })
             }
           >
-            Купити
+            {Buy}
           </Button>
         </CardActions>
       </Card>

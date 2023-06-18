@@ -9,6 +9,7 @@ import Header from './components/Header';
 import {Container} from '@mui/material';
 import Basket from './components/Basket';
 import Snack from './components/Snack';
+import {Message} from './services/lang/messages';
 
 const App = () => {
   const [order, setOrder] = useState([]);
@@ -16,6 +17,8 @@ const App = () => {
   const [products, setProducts] = useState(goods);
   const [isOpenCart, setOpenCart] = useState(false);
   const [isOpenSnackbar, setOpenSnackbar] = useState(false);
+
+  const {Buy} = Message.Service;
 
   const handleChange = (e) => {
     if (!e.target.value) {
@@ -74,7 +77,7 @@ const App = () => {
   };
 
   const closeSnackbar = (event) => {
-    if (event && event.target.textContent === 'Купити') {
+    if (event && event.target.textContent === Buy) {
       return;
     }
     setOpenSnackbar(false);

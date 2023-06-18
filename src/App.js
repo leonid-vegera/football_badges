@@ -1,21 +1,27 @@
 import React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
 
 import GoodsList from './components/GoodsList';
 import Search from './components/Search';
 
-import { goods } from './data/goods';
+import {goods} from './data/goods';
 import Header from './components/Header';
-import { Container } from '@mui/material';
+import {Container} from '@mui/material';
 import Basket from './components/Basket';
 import Snack from './components/Snack';
+import {Message} from './services/lang/messages';
+import useLocalStorage from './services/useLocalStorage';
 
 const App = () => {
-  const [order, setOrder] = useState([]);
+  const [order, setOrder] = useLocalStorage(['order', []]);
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState(goods);
   const [isOpenCart, setOpenCart] = useState(false);
   const [isOpenSnackbar, setOpenSnackbar] = useState(false);
+  const [snackBarText, setSnackBarText] = useState('');
+  const [snackSeverity, setSnackSeverity] = useState('');
+
+  const {Buy} = Message.Service;
 
   const handleChange = (e) => {
     if (!e.target.value) {
@@ -74,20 +80,20 @@ const App = () => {
   };
 
   const closeSnackbar = (event) => {
-    if (event && event.target.textContent === 'Купити') {
+    if (event && event.target.textContent === Buy) {
       return;
     }
     setOpenSnackbar(false);
   }
 
   return (
-    <div className='App'>
-      <div className='container'>
+    <div className="App">
+      <div className="container">
         <Header
           openCart={() => setOpenCart(true)}
           orderLength={order.length}
         />
-        <Container sx={{ mt: '1rem' }}>
+        <Container sx={{mt: '1rem'}}>
           <Search
             value={search}
             onChange={handleChange}
@@ -95,15 +101,25 @@ const App = () => {
           <GoodsList
             goods={products}
             setOrder={addToOrder}
+            setSnackSeverity={setSnackSeverity}
+            setSnackBarText={setSnackBarText}
           />
         </Container>
         <Basket
           order={order}
           removeFromOrder={removeFromOrder}
           isOpened={isOpenCart}
+          setOpenSnackbar={setOpenSnackbar}
+          setSnackSeverity={setSnackSeverity}
+          setSnackBarText={setSnackBarText}
           closeCart={() => setOpenCart(false)}
         />
-        <Snack isOpen={isOpenSnackbar} close={closeSnackbar}/>
+        <Snack
+          isOpen={isOpenSnackbar}
+          close={closeSnackbar}
+          severity={snackSeverity}
+          text={snackBarText}
+        />
       </div>
     </div>
   );

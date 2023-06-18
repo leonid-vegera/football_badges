@@ -1,15 +1,16 @@
 import React from 'react';
-import { Alert, Snackbar } from '@mui/material';
+import {Alert, Snackbar} from '@mui/material';
 
-const Snack = ({ isOpen, close }) => {
+const Snack = ({isOpen, close, severity, text}) => {
+
   return (
     <Snackbar open={isOpen} autoHideDuration={3000} onClose={close}>
       <Alert
-        severity="success"
+        severity={severity}
         onClose={close}
-        sx={{ width: '100%' }}
+        sx={{width: '100%'}}
       >
-        Товар додано до корзини!
+        {text}
       </Alert>
     </Snackbar>
   )

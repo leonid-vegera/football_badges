@@ -10,9 +10,10 @@ import {Container} from '@mui/material';
 import Basket from './components/Basket';
 import Snack from './components/Snack';
 import {Message} from './services/lang/messages';
+import useLocalStorage from './services/useLocalStorage';
 
 const App = () => {
-  const [order, setOrder] = useState([]);
+  const [order, setOrder] = useLocalStorage(['order', []]);
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState(goods);
   const [isOpenCart, setOpenCart] = useState(false);

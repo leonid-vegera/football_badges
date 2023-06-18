@@ -17,6 +17,8 @@ const App = () => {
   const [products, setProducts] = useState(goods);
   const [isOpenCart, setOpenCart] = useState(false);
   const [isOpenSnackbar, setOpenSnackbar] = useState(false);
+  const [snackBarText, setSnackBarText] = useState('');
+  const [snackSeverity, setSnackSeverity] = useState('');
 
   const {Buy} = Message.Service;
 
@@ -98,15 +100,25 @@ const App = () => {
           <GoodsList
             goods={products}
             setOrder={addToOrder}
+            setSnackSeverity={setSnackSeverity}
+            setSnackBarText={setSnackBarText}
           />
         </Container>
         <Basket
           order={order}
           removeFromOrder={removeFromOrder}
           isOpened={isOpenCart}
+          setOpenSnackbar={setOpenSnackbar}
+          setSnackSeverity={setSnackSeverity}
+          setSnackBarText={setSnackBarText}
           closeCart={() => setOpenCart(false)}
         />
-        <Snack isOpen={isOpenSnackbar} close={closeSnackbar}/>
+        <Snack
+          isOpen={isOpenSnackbar}
+          close={closeSnackbar}
+          severity={snackSeverity}
+          text={snackBarText}
+        />
       </div>
     </div>
   );

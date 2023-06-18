@@ -2,7 +2,7 @@ import ua from './ua';
 import en from './en';
 
 const getLocalization = () => {
-  let Message = en;
+  let Message = ua;
   return Message;
 }
 

@@ -24,7 +24,8 @@ const Messages = {
   },
   Message: {
     BasketIsEmpty: 'Basket is empty!',
-    AddedToBasket: 'Added to basket!'
+    AddedToBasket: 'Added to basket!',
+    DeletedFromBasket: 'Deleted from basket!',
   },
 }
 

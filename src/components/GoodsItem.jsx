@@ -3,8 +3,19 @@ import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} fro
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import {Message} from '../services/lang/messages';
 
-const GoodsItem = ({setOrder, poster, name, price, id}) => {
+const GoodsItem = ({setOrder, poster, name, price, id, setSnackSeverity, setSnackBarText}) => {
   const {Hryvna, Price, Buy} = Message.Service;
+  const {AddedToBasket} = Message.Message;
+
+  const addItemToBasket = () => {
+    setOrder({
+      id: id,
+      name: name,
+      price: price,
+    });
+    setSnackBarText(AddedToBasket);
+    setSnackSeverity('success');
+  }
 
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -31,13 +42,7 @@ const GoodsItem = ({setOrder, poster, name, price, id}) => {
           <Button
             variant="contained"
             endIcon={<AddShoppingCartIcon/>}
-            onClick={() =>
-              setOrder({
-                id: id,
-                name: name,
-                price: price,
-              })
-            }
+            onClick={addItemToBasket}
           >
             {Buy}
           </Button>

@@ -6,9 +6,12 @@ import {Message} from '../services/lang/messages';
 
 const Basket = ({
   isOpened,
+  setOpenSnackbar,
   order = [],
   removeFromOrder,
-  closeCart
+  closeCart,
+  setSnackSeverity,
+  setSnackBarText
 }) => {
   const {Basket, Hryvna, TotalPrice,} = Message.Service;
   const {BasketIsEmpty} = Message.Message;
@@ -34,7 +37,14 @@ const Basket = ({
       ) : (
         <>
           {order.map((item, index) => (
-            <BasketItem key={index} removeFromOrder={removeFromOrder} {...item} />
+            <BasketItem
+              key={index}
+              removeFromOrder={removeFromOrder}
+              {...item}
+              setOpenSnackbar={setOpenSnackbar}
+              setSnackBarText={setSnackBarText}
+              setSnackSeverity={setSnackSeverity}
+            />
           ))}
           <Divider variant="fullWidth"/>
           <ListItem>

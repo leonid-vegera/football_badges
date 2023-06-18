@@ -24,7 +24,8 @@ const Messages = {
   },
   Message: {
     BasketIsEmpty: 'Корзина пуста!',
-    AddedToBasket: 'Товар додано до корзини!'
+    AddedToBasket: 'Товар додано до корзини!',
+    DeletedFromBasket: 'Товар видалено з корзини!'
   },
 }
 

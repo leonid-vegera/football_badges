@@ -1,18 +1,16 @@
 import React from 'react';
 import {Alert, Snackbar} from '@mui/material';
-import {Message} from '../services/lang/messages';
 
-const Snack = ({isOpen, close}) => {
-  const {AddedToBasket} = Message.Message;
+const Snack = ({isOpen, close, severity, text}) => {
 
   return (
     <Snackbar open={isOpen} autoHideDuration={3000} onClose={close}>
       <Alert
-        severity="success"
+        severity={severity}
         onClose={close}
         sx={{width: '100%'}}
       >
-        {AddedToBasket}
+        {text}
       </Alert>
     </Snackbar>
   )

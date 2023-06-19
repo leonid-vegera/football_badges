@@ -1,9 +1,9 @@
-const Messages = {
+const translations = {
   Description: {
     FootballBadges: 'Football badges',
-    HunterTompson: 'Hunter Tompson. European supporters',
+    HunterTompson: 'Hunter Tompson supports Dynamo',
     ACAB: 'ACAB. Pepsi style',
-    DonaldDuck: 'Donald Duck supports Dynamo & Sokil',
+    DonaldDuck: 'Donald Duck supports Kyiv',
     DynamoKit: 'Dynamo Kyiv kit',
     Lazio: 'Lazio Rome',
     DynamoRhomb: 'Dynamo Kyiv rhomb',
@@ -24,9 +24,9 @@ const Messages = {
   },
   Message: {
     BasketIsEmpty: 'Basket is empty!',
-    AddedToBasket: 'Added to basket!',
-    DeletedFromBasket: 'Deleted from basket!',
+    AddedToBasket: 'Added to the basket!',
+    DeletedFromBasket: 'Deleted from the basket!',
   },
 }
 
-export default Messages;
+export default translations;

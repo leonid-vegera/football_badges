@@ -1,20 +1,20 @@
 import React from 'react';
-import {IconButton, ListItem, Typography} from '@mui/material';
+import { IconButton, ListItem, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import {Message} from '../services/lang/messages';
+import { translate } from '../services/lang/messages';
 
 const BasketItem = ({
-  removeFromOrder,
-  name,
-  price,
-  id,
-  quantity,
-  setSnackSeverity,
-  setOpenSnackbar,
-  setSnackBarText
-}) => {
-  const {Hryvna} = Message.Service;
-  const {DeletedFromBasket} = Message.Message;
+                      removeFromOrder,
+                      name,
+                      price,
+                      id,
+                      quantity,
+                      setSnackSeverity,
+                      setOpenSnackbar,
+                      setSnackBarText
+                    }) => {
+  const { Hryvna } = translate('Service');
+  const { DeletedFromBasket } = translate('Message');
 
   const deleteItemHandle = () => {
     removeFromOrder(id);

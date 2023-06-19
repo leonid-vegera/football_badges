@@ -1,4 +1,4 @@
-import {Message} from '../services/lang/messages';
+import { translate } from '../services/lang/messages';
 
 const {
   HunterTompson,
@@ -13,7 +13,7 @@ const {
   PearlOfFootball,
   RealMadrid,
   Sportcomitet
-} = Message.Description;
+} = translate('Description');
 
 export const goods = [
   {

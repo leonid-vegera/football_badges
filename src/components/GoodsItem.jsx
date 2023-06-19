@@ -1,11 +1,13 @@
 import React from 'react';
-import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import {Message} from '../services/lang/messages';
+import { translate } from '../services/lang/messages';
 
-const GoodsItem = ({setOrder, poster, name, price, id, setSnackSeverity, setSnackBarText}) => {
-  const {Hryvna, Price, Buy} = Message.Service;
-  const {AddedToBasket} = Message.Message;
+const GoodsItem = ({ setOrder, poster, name, price, id, setSnackSeverity, setSnackBarText }) => {
+  const { Hryvna, Price, Buy } = translate('Service');
+  const { AddedToBasket } = translate('Message');
+
+  // console.log('Name', name)
 
   const addItemToBasket = () => {
     setOrder({
@@ -19,10 +21,10 @@ const GoodsItem = ({setOrder, poster, name, price, id, setSnackSeverity, setSnac
 
   return (
     <Grid item xs={12} sm={6} md={4}>
-      <Card sx={{height: '100%'}}>
+      <Card sx={{ height: '100%' }}>
         <a href={poster} target="_blank">
           <CardMedia
-            sx={{height: 140}}
+            sx={{ height: 140 }}
             component="img"
             src={poster}
             title={name}

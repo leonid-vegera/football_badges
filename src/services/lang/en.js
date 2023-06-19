@@ -1,9 +1,9 @@
 const translations = {
   Description: {
     FootballBadges: 'Football badges',
-    HunterTompson: 'Hunter Tompson. European supporters',
+    HunterTompson: 'Hunter Tompson supports Dynamo',
     ACAB: 'ACAB. Pepsi style',
-    DonaldDuck: 'Donald Duck supports Dynamo & Sokil',
+    DonaldDuck: 'Donald Duck supports Kyiv',
     DynamoKit: 'Dynamo Kyiv kit',
     Lazio: 'Lazio Rome',
     DynamoRhomb: 'Dynamo Kyiv rhomb',

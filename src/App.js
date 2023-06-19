@@ -106,6 +106,7 @@ const App = () => {
             setOrder={addToOrder}
             setSnackSeverity={setSnackSeverity}
             setSnackBarText={setSnackBarText}
+            language={language}
           />
         </Container>
         <Basket

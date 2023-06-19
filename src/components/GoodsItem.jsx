@@ -7,6 +7,8 @@ const GoodsItem = ({ setOrder, poster, name, price, id, setSnackSeverity, setSna
   const { Hryvna, Price, Buy } = translate('Service');
   const { AddedToBasket } = translate('Message');
 
+  // console.log('Name', name)
+
   const addItemToBasket = () => {
     setOrder({
       id: id,

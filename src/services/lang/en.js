@@ -1,4 +1,4 @@
-const Messages = {
+const translations = {
   Description: {
     FootballBadges: 'Football badges',
     HunterTompson: 'Hunter Tompson. European supporters',
@@ -24,9 +24,9 @@ const Messages = {
   },
   Message: {
     BasketIsEmpty: 'Basket is empty!',
-    AddedToBasket: 'Added to basket!',
-    DeletedFromBasket: 'Deleted from basket!',
+    AddedToBasket: 'Added to the basket!',
+    DeletedFromBasket: 'Deleted from the basket!',
   },
 }
 
-export default Messages;
+export default translations;

@@ -1,20 +1,20 @@
 import React from 'react';
-import {Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Typography} from '@mui/material';
+import { Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
 import BasketItem from './BasketItem';
-import {ShoppingBasket} from '@mui/icons-material';
-import {Message} from '../services/lang/messages';
+import { ShoppingBasket } from '@mui/icons-material';
+import { translate } from '../services/lang/messages';
 
 const Basket = ({
-  isOpened,
-  setOpenSnackbar,
-  order = [],
-  removeFromOrder,
-  closeCart,
-  setSnackSeverity,
-  setSnackBarText
-}) => {
-  const {Basket, Hryvna, TotalPrice,} = Message.Service;
-  const {BasketIsEmpty} = Message.Message;
+                  isOpened,
+                  setOpenSnackbar,
+                  order = [],
+                  removeFromOrder,
+                  closeCart,
+                  setSnackSeverity,
+                  setSnackBarText
+                }) => {
+  const { Basket, Hryvna, TotalPrice } = translate('Service');
+  const { BasketIsEmpty } = translate('Message');
 
   return (
     <Drawer
@@ -22,7 +22,7 @@ const Basket = ({
       open={isOpened}
       onClose={closeCart}
     >
-      <List sx={{width: '400px'}}>
+      <List sx={{ width: '400px' }}>
         <ListItem>
           <ListItemButton>
             <ShoppingBasket/>
@@ -48,7 +48,7 @@ const Basket = ({
           ))}
           <Divider variant="fullWidth"/>
           <ListItem>
-            <Typography sx={{fontWeight: '700'}}>
+            <Typography sx={{ fontWeight: '700' }}>
               {TotalPrice}:{' '}
               {order.reduce((acc, item) => {
                 return acc + item.price * item.quantity;

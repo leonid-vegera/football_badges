@@ -1,17 +1,18 @@
 import React from 'react';
-import {InputAdornment, TextField} from '@mui/material';
+import { InputAdornment, TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import {Message} from '../services/lang/messages'
+import { translate } from '../services/lang/messages'
 
-const Search = ({value, onChange}) => {
+const Search = ({ value, onChange }) => {
+  const { Search } = translate('Service');
   return (
     <TextField
       id="outlined-search"
-      label={Message.Service.Search}
+      label={Search}
       type="search"
       variant="standard"
       fullWidth
-      sx={{mb: '1rem'}}
+      sx={{ mb: '1rem' }}
       value={value}
       onChange={onChange}
       InputProps={{

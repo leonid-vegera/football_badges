@@ -1,4 +1,4 @@
-const Messages = {
+const translations = {
   Description: {
     FootballBadges: 'Футбольні значки',
     HunterTompson: 'Хантер Томпсон. Європейські суппортери',
@@ -29,4 +29,4 @@ const Messages = {
   },
 }
 
-export default Messages;
+export default translations;

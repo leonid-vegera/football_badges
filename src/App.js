@@ -1,27 +1,28 @@
 import React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
 
 import GoodsList from './components/GoodsList';
 import Search from './components/Search';
 
-import {goods} from './data/goods';
+import { goods } from './data/goods';
 import Header from './components/Header';
-import {Container} from '@mui/material';
+import { Container } from '@mui/material';
 import Basket from './components/Basket';
 import Snack from './components/Snack';
-import {Message} from './services/lang/messages';
 import useLocalStorage from './services/useLocalStorage';
+import { translate } from './services/lang/messages';
 
 const App = () => {
-  const [order, setOrder] = useLocalStorage(['order', []]);
   const [search, setSearch] = useState('');
   const [products, setProducts] = useState(goods);
   const [isOpenCart, setOpenCart] = useState(false);
   const [isOpenSnackbar, setOpenSnackbar] = useState(false);
   const [snackBarText, setSnackBarText] = useState('');
   const [snackSeverity, setSnackSeverity] = useState('');
+  const [order, setOrder] = useLocalStorage('order', []);
+  const [language, setLanguage] = useLocalStorage('language', '');
 
-  const {Buy} = Message.Service;
+  const { Buy } = translate('Service');
 
   const handleChange = (e) => {
     if (!e.target.value) {
@@ -92,8 +93,10 @@ const App = () => {
         <Header
           openCart={() => setOpenCart(true)}
           orderLength={order.length}
+          lang={language}
+          setLang={setLanguage}
         />
-        <Container sx={{mt: '1rem'}}>
+        <Container sx={{ mt: '1rem' }}>
           <Search
             value={search}
             onChange={handleChange}

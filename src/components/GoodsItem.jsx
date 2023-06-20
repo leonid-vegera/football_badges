@@ -20,7 +20,7 @@ const GoodsItem = ({ setOrder, poster, name, price, id, setSnackSeverity, setSna
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card sx={{ height: '100%' }}>
-        <a href={poster} target="_blank">
+        <a href={poster} target="_blank" rel="noopener noreferrer">
           <CardMedia
             sx={{ height: 140 }}
             component="img"

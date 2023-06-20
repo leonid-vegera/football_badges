@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 import GoodsList from './components/GoodsList';
@@ -14,26 +14,40 @@ import { translate } from './services/lang/messages';
 
 const App = () => {
   const [search, setSearch] = useState('');
-  const [products, setProducts] = useState(goods);
   const [isOpenCart, setOpenCart] = useState(false);
   const [isOpenSnackbar, setOpenSnackbar] = useState(false);
   const [snackBarText, setSnackBarText] = useState('');
   const [snackSeverity, setSnackSeverity] = useState('');
   const [order, setOrder] = useLocalStorage('order', []);
   const [language, setLanguage] = useLocalStorage('language', '');
+  const [translatedGoods, setTranslatedGoods] = useState(goods);
+  const [preparedGoods, setPreparedGoods] = useState(goods);
 
   const { Buy } = translate('Service');
 
+  useEffect(() => {
+    const translations = translate('Description');
+    const keys = Object.keys(translations);
+
+    const updatedGoods = goods.map((item, index) => ({
+      ...item,
+      name: translations[keys[index + 1]],
+    }));
+
+    setPreparedGoods(updatedGoods);
+    setTranslatedGoods(updatedGoods);
+  }, [language]);
+
   const handleChange = (e) => {
     if (!e.target.value) {
-      setProducts(goods);
+      setPreparedGoods(translatedGoods);
       setSearch('');
       return;
     }
 
     setSearch(e.target.value);
-    setProducts(
-      products.filter((good) =>
+    setPreparedGoods(
+      translatedGoods.filter((good) =>
         good.name.toLowerCase().includes(e.target.value.toLowerCase())
       ))
   };
@@ -102,11 +116,12 @@ const App = () => {
             onChange={handleChange}
           />
           <GoodsList
-            goods={products}
+            goods={preparedGoods}
             setOrder={addToOrder}
             setSnackSeverity={setSnackSeverity}
             setSnackBarText={setSnackBarText}
             language={language}
+            search={search}
           />
         </Container>
         <Basket

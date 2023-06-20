@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, FormControlLabel, IconButton, Switch, Toolbar, Typography } from '@mui/material';
+import { AppBar, FormControlLabel, IconButton, Toolbar, Typography } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
 import Badge from '@mui/material/Badge';
 import LanguageSwitch from './LanguageSwitch';

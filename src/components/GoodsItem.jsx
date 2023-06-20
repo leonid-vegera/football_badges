@@ -1,13 +1,11 @@
 import React from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Stack, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { translate } from '../services/lang/messages';
 
 const GoodsItem = ({ setOrder, poster, name, price, id, setSnackSeverity, setSnackBarText }) => {
   const { Hryvna, Price, Buy } = translate('Service');
   const { AddedToBasket } = translate('Message');
-
-  // console.log('Name', name)
 
   const addItemToBasket = () => {
     setOrder({
@@ -32,23 +30,25 @@ const GoodsItem = ({ setOrder, poster, name, price, id, setSnackSeverity, setSna
           />
         </a>
 
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="h3">
-            {name}
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            {Price}: {price} {Hryvna}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button
-            variant="contained"
-            endIcon={<AddShoppingCartIcon/>}
-            onClick={addItemToBasket}
-          >
-            {Buy}
-          </Button>
-        </CardActions>
+        <Stack sx={{ height: '50%' }} justifyContent="space-between">
+          <CardContent>
+            <Typography gutterBottom variant="h6" component="h3">
+              {name}
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              {Price}: {price} {Hryvna}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              variant="contained"
+              endIcon={<AddShoppingCartIcon/>}
+              onClick={addItemToBasket}
+            >
+              {Buy}
+            </Button>
+          </CardActions>
+        </Stack>
       </Card>
     </Grid>
   );

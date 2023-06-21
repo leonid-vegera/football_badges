@@ -5,6 +5,8 @@ import App from './App';
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
 import { DevSupport } from '@react-buddy/ide-toolbox';
 import { ComponentPreviews, useInitial } from './dev';
+import { LangProvider } from './services/LangProvider';
+import { GoodsProvider } from './services/GoodsProvider';
 
 const theme = createTheme({
   palette: {
@@ -23,7 +25,11 @@ root.render(
     <DevSupport ComponentPreviews={ComponentPreviews}
                 useInitialHook={useInitial}
     >
-      <App/>
+      <LangProvider>
+        <GoodsProvider>
+          <App/>
+        </GoodsProvider>
+      </LangProvider>
     </DevSupport>
   </ThemeProvider>
 );

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 
 import GoodsList from './components/GoodsList';
@@ -11,6 +11,8 @@ import Basket from './components/Basket';
 import Snack from './components/Snack';
 import useLocalStorage from './services/useLocalStorage';
 import { translate } from './services/lang/messages';
+import { LangContext } from './services/LangProvider';
+import { GoodsContext } from './services/GoodsProvider';
 
 const App = () => {
   const [search, setSearch] = useState('');
@@ -18,10 +20,19 @@ const App = () => {
   const [isOpenSnackbar, setOpenSnackbar] = useState(false);
   const [snackBarText, setSnackBarText] = useState('');
   const [snackSeverity, setSnackSeverity] = useState('');
-  const [order, setOrder] = useLocalStorage('order', []);
-  const [language, setLanguage] = useLocalStorage('language', '');
-  const [translatedGoods, setTranslatedGoods] = useState(goods);
-  const [preparedGoods, setPreparedGoods] = useState(goods);
+  // const [order, setOrder] = useLocalStorage('order', []);
+  // const [translatedGoods, setTranslatedGoods] = useState(goods);
+  // const [preparedGoods, setPreparedGoods] = useState(goods);
+
+  const { language, setLanguage } = useContext(LangContext);
+  const {
+    order,
+    setOrder,
+    translatedGoods,
+    setTranslatedGoods,
+    preparedGoods,
+    setPreparedGoods
+  } = useContext(GoodsContext);
 
   const { Buy } = translate('Service');
 

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Stack, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { translate } from '../services/lang/messages';
+import { GoodsContext } from '../services/GoodsProvider';
 
 const GoodsItem = ({ setOrder, poster, name, price, id, setSnackSeverity, setSnackBarText }) => {
+  // const { setOrder } = useContext(GoodsContext);
+
   const { Hryvna, Price, Buy } = translate('Service');
   const { AddedToBasket } = translate('Message');
+
 
   const addItemToBasket = () => {
     setOrder({

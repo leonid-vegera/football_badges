@@ -7,6 +7,7 @@ import { DevSupport } from '@react-buddy/ide-toolbox';
 import { ComponentPreviews, useInitial } from './dev';
 import { LangProvider } from './services/LangProvider';
 import { GoodsProvider } from './services/GoodsProvider';
+import { SnackBarProvider } from './services/SnackBarProvider';
 
 const theme = createTheme({
   palette: {
@@ -26,9 +27,11 @@ root.render(
                 useInitialHook={useInitial}
     >
       <LangProvider>
-        <GoodsProvider>
-          <App/>
-        </GoodsProvider>
+        <SnackBarProvider>
+          <GoodsProvider>
+            <App/>
+          </GoodsProvider>
+        </SnackBarProvider>
       </LangProvider>
     </DevSupport>
   </ThemeProvider>

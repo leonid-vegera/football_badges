@@ -1,18 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
 import BasketItem from './BasketItem';
 import { ShoppingBasket } from '@mui/icons-material';
 import { translate } from '../services/lang/messages';
+import { GoodsContext } from '../services/GoodsProvider';
 
-const Basket = ({
-                  isOpened,
-                  setOpenSnackbar,
-                  order = [],
-                  removeFromOrder,
-                  closeCart,
-                  setSnackSeverity,
-                  setSnackBarText
-                }) => {
+const Basket = ({ isOpened, closeCart }) => {
+  const { order = [] } = useContext(GoodsContext);
   const { Basket, Hryvna, TotalPrice } = translate('Service');
   const { BasketIsEmpty } = translate('Message');
 
@@ -39,11 +33,7 @@ const Basket = ({
           {order.map((item, index) => (
             <BasketItem
               key={index}
-              removeFromOrder={removeFromOrder}
               {...item}
-              setOpenSnackbar={setOpenSnackbar}
-              setSnackBarText={setSnackBarText}
-              setSnackSeverity={setSnackSeverity}
             />
           ))}
           <Divider variant="fullWidth"/>

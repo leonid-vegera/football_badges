@@ -1,18 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { IconButton, ListItem, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { translate } from '../services/lang/messages';
+import { GoodsContext } from '../services/GoodsProvider';
+import { SnackBarContext } from '../services/SnackBarProvider';
 
-const BasketItem = ({
-                      removeFromOrder,
-                      name,
-                      price,
-                      id,
-                      quantity,
-                      setSnackSeverity,
-                      setOpenSnackbar,
-                      setSnackBarText
-                    }) => {
+const BasketItem = ({ name, price, id, quantity, }) => {
+  const { removeFromOrder } = useContext(GoodsContext);
+  const { setSnackSeverity, setOpenSnackbar, setSnackBarText } = useContext(SnackBarContext);
+
   const { Hryvna } = translate('Service');
   const { DeletedFromBasket } = translate('Message');
 

@@ -6,7 +6,7 @@ import Search from './components/Search';
 
 import { goods } from './data/goods';
 import Header from './components/Header';
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import Basket from './components/Basket';
 import Snack from './components/Snack';
 import { translate } from './services/lang/messages';
@@ -53,11 +53,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="container">
+      <Box sx={{ minWidth: '340px' }}>
         <Header
           openCart={() => setOpenCart(true)}
         />
-        <Container sx={{ mt: '1rem' }}>
+        <Container sx={{ mt: '1rem', minWidth: '340px' }}>
           <Search
             value={search}
             onChange={handleChange}
@@ -69,7 +69,7 @@ const App = () => {
           closeCart={() => setOpenCart(false)}
         />
         <Snack/>
-      </div>
+      </Box>
     </div>
   );
 }

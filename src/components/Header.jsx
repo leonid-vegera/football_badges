@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AppBar, FormControlLabel, IconButton, Toolbar, Typography } from '@mui/material';
-import { ShoppingCart } from '@mui/icons-material';
+import { ShoppingCart, SportsSoccer as SportsSoccerIcon } from '@mui/icons-material';
 import Badge from '@mui/material/Badge';
 import LanguageSwitch from './LanguageSwitch';
 import { setActiveLanguage, translate } from '../services/lang/messages';
@@ -21,6 +21,9 @@ const Header = ({ openCart }) => {
   return (
     <AppBar position="sticky">
       <Toolbar>
+        <IconButton color='inherit' sx={{ cursor: 'initial' }}>
+          <SportsSoccerIcon/>
+        </IconButton>
         <Typography variant="h6" component="span" sx={{ flexGrow: 1 }}>
           {FootballBadges}
         </Typography>

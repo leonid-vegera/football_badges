@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Stack, Typography } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Link, Stack, Typography } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { translate } from '../services/lang/messages';
 import { GoodsContext } from '../services/GoodsProvider';
@@ -26,7 +26,7 @@ const GoodsItem = ({ poster, name, price, id }) => {
   return (
     <Grid item xs={12} sm={6} md={4}>
       <Card sx={{ height: '100%' }}>
-        <a href={poster} target="_blank" rel="noopener noreferrer">
+        <Link href={poster} target="_blank" rel="noopener noreferrer">
           <CardMedia
             sx={{ height: 140 }}
             component="img"
@@ -34,7 +34,7 @@ const GoodsItem = ({ poster, name, price, id }) => {
             title={name}
             alt={name}
           />
-        </a>
+        </Link>
 
         <Stack sx={{ height: '50%' }} justifyContent="space-between">
           <CardContent>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { IconButton, ListItem, Typography } from '@mui/material';
+import { IconButton, ListItem, Stack, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { translate } from '../services/lang/messages';
 import { GoodsContext } from '../services/GoodsProvider';
@@ -21,12 +21,14 @@ const BasketItem = ({ name, price, id, quantity, }) => {
 
   return (
     <ListItem>
-      <Typography variant="body1">
-        {name} {price} {Hryvna} x {quantity}
-      </Typography>
-      <IconButton aria-label="delete" onClick={deleteItemHandle}>
-        <DeleteIcon/>
-      </IconButton>
+      <Stack direction='row' justifyContent='space-between' alignItems='center' width='100%'>
+        <Typography variant="body1">
+          {name} {price} {Hryvna} x {quantity}
+        </Typography>
+        <IconButton aria-label="delete" onClick={deleteItemHandle}>
+          <DeleteIcon/>
+        </IconButton>
+      </Stack>
     </ListItem>
   );
 };

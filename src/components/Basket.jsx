@@ -16,7 +16,7 @@ const Basket = ({ isOpened, closeCart }) => {
       open={isOpened}
       onClose={closeCart}
     >
-      <List sx={{ width: '400px' }}>
+      <List sx={{ width: '400px', maxWidth: '75vw' }}>
         <ListItem>
           <ListItemButton>
             <ShoppingBasket/>
@@ -24,30 +24,30 @@ const Basket = ({ isOpened, closeCart }) => {
           <ListItemText primary={Basket}/>
         </ListItem>
         <Divider variant="fullWidth"/>
-      </List>
 
-      {!order.length ? (
-        <ListItem>{BasketIsEmpty}</ListItem>
-      ) : (
-        <>
-          {order.map((item, index) => (
-            <BasketItem
-              key={index}
-              {...item}
-            />
-          ))}
-          <Divider variant="fullWidth"/>
-          <ListItem>
-            <Typography sx={{ fontWeight: '700' }}>
-              {TotalPrice}:{' '}
-              {order.reduce((acc, item) => {
-                return acc + item.price * item.quantity;
-              }, 0)}{' '}
-              {Hryvna}.
-            </Typography>
-          </ListItem>
-        </>
-      )}
+        {!order.length ? (
+          <ListItem>{BasketIsEmpty}</ListItem>
+        ) : (
+          <>
+            {order.map((item, index) => (
+              <BasketItem
+                key={index}
+                {...item}
+              />
+            ))}
+            <Divider variant="fullWidth"/>
+            <ListItem sx={{ my: 2 }}>
+              <Typography sx={{ fontWeight: '700' }}>
+                {TotalPrice}:{' '}
+                {order.reduce((acc, item) => {
+                  return acc + item.price * item.quantity;
+                }, 0)}{' '}
+                {Hryvna}.
+              </Typography>
+            </ListItem>
+          </>
+        )}
+      </List>
     </Drawer>
   )
 }

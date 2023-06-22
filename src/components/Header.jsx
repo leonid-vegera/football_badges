@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { AppBar, FormControlLabel, IconButton, Toolbar, Typography } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
 import Badge from '@mui/material/Badge';
 import LanguageSwitch from './LanguageSwitch';
 import { setActiveLanguage, translate } from '../services/lang/messages';
+import { GoodsContext } from '../services/GoodsProvider';
+import { LangContext } from '../services/LangProvider';
 
-const Header = ({ openCart, orderLength, lang, setLang }) => {
+const Header = ({ openCart }) => {
+  const { language, setLanguage } = useContext(LangContext);
+  const { order } = useContext(GoodsContext);
   const { FootballBadges } = translate('Description');
 
   const handleLangChange = (event) => {
     const lang = event.target.checked ? 'ua' : 'en';
-    setLang(lang);
+    setLanguage(lang);
     setActiveLanguage(lang)
   }
 
@@ -22,11 +26,11 @@ const Header = ({ openCart, orderLength, lang, setLang }) => {
         </Typography>
         <FormControlLabel
           control={<LanguageSwitch sx={{ m: 1 }}/>}
-          checked={lang === 'ua'}
+          checked={language === 'ua'}
           onChange={handleLangChange}
         />
         <IconButton color="inherit" onClick={openCart}>
-          <Badge badgeContent={orderLength} color="secondary">
+          <Badge badgeContent={order.length} color="secondary">
             <ShoppingCart/>
           </Badge>
         </IconButton>

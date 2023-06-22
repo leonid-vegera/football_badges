@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import GoodsItem from './GoodsItem';
 import { Grid } from '@mui/material';
+import { GoodsContext } from '../services/GoodsProvider';
 
-const GoodsList = ({ goods, setOrder, setSnackSeverity, setSnackBarText }) => {
+const GoodsList = () => {
+  const { preparedGoods } = useContext(GoodsContext);
 
   return (
     <Grid
       container
       spacing={2}
     >
-      {goods.map((good) => (
-        <GoodsItem
-          key={good.id}
-          setOrder={setOrder}
-          setSnackSeverity={setSnackSeverity}
-          setSnackBarText={setSnackBarText}
-          {...good} />
+      {preparedGoods.map((good) => (
+        <GoodsItem key={good.id} {...good} />
       ))}
     </Grid>
   );

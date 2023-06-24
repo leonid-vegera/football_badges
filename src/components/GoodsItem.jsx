@@ -1,5 +1,16 @@
 import React, { useContext } from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Link, Stack, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Link,
+  Stack,
+  Tooltip,
+  Typography, Zoom
+} from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { translate } from '../services/lang/messages';
 import { GoodsContext } from '../services/GoodsProvider';
@@ -10,7 +21,7 @@ const GoodsItem = ({ poster, name, price, id }) => {
   const { setSnackSeverity, setSnackBarText, setOpenSnackbar } = useContext(SnackBarContext);
 
   const { Hryvna, Price, Buy } = translate('Service');
-  const { AddedToBasket } = translate('Message');
+  const { AddedToBasket, AddGoodToBasket } = translate('Message');
 
   const addItemToBasket = () => {
     addToOrder({
@@ -46,13 +57,22 @@ const GoodsItem = ({ poster, name, price, id }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button
-              variant="contained"
-              endIcon={<AddShoppingCartIcon/>}
-              onClick={addItemToBasket}
+            <Tooltip
+              title={AddGoodToBasket}
+              TransitionComponent={Zoom}
+              placement="right"
+              enterDelay={500}
+              leaveDelay={200}
+              arrow
             >
-              {Buy}
-            </Button>
+              <Button
+                variant="contained"
+                endIcon={<AddShoppingCartIcon/>}
+                onClick={addItemToBasket}
+              >
+                {Buy}
+              </Button>
+            </Tooltip>
           </CardActions>
         </Stack>
       </Card>

@@ -21,11 +21,13 @@ const translations = {
     Buy: 'Купити',
     TotalPrice: 'Загальна сума',
     Hryvna: 'грн',
+    AddedGoods: 'Додані товари'
   },
   Message: {
     BasketIsEmpty: 'Корзина пуста!',
     AddedToBasket: 'Товар додано до корзини!',
-    DeletedFromBasket: 'Товар видалено з корзини!'
+    DeletedFromBasket: 'Товар видалено з корзини!',
+    AddGoodToBasket: 'Додайте товар до корзини',
   },
 }
 

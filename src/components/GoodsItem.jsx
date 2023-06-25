@@ -8,13 +8,14 @@ import {
   Grid,
   Link,
   Stack,
-  Tooltip,
-  Typography, Zoom
+  Typography,
+  Zoom
 } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { translate } from '../services/lang/messages';
 import { GoodsContext } from '../services/GoodsProvider';
 import { SnackBarContext } from '../services/SnackBarProvider';
+import withToolTip from '../services/WithToolTip';
 
 const GoodsItem = ({ poster, name, price, id }) => {
   const { addToOrder } = useContext(GoodsContext);
@@ -33,6 +34,8 @@ const GoodsItem = ({ poster, name, price, id }) => {
     setSnackBarText(AddedToBasket);
     setSnackSeverity('success');
   }
+
+  const ButtonWithTooltip = withToolTip(Button);
 
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -57,22 +60,18 @@ const GoodsItem = ({ poster, name, price, id }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Tooltip
+            <ButtonWithTooltip
               title={AddGoodToBasket}
-              TransitionComponent={Zoom}
-              placement="right"
+              transitionComponent={Zoom}
+              placement='right'
               enterDelay={500}
-              leaveDelay={200}
-              arrow
+              leaveDelay={0}
+              arrow={true}
+              endIcon={<AddShoppingCartIcon/>}
+              onClick={addItemToBasket}
             >
-              <Button
-                variant="contained"
-                endIcon={<AddShoppingCartIcon/>}
-                onClick={addItemToBasket}
-              >
-                {Buy}
-              </Button>
-            </Tooltip>
+              {Buy}
+            </ButtonWithTooltip>
           </CardActions>
         </Stack>
       </Card>

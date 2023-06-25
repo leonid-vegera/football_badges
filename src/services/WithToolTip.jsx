@@ -1,25 +1,35 @@
-import { Button, Tooltip, Zoom } from '@mui/material';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { Fade, Tooltip } from '@mui/material';
 import React from 'react';
 
 const withToolTip = (WrappedComponent) => {
 
-  const WithToolTipComponent = ({ ...props }) => {
+  const WithToolTipComponent = (props) => {
+    const {
+      title,
+      transitionComponent = Fade,
+      placement,
+      enterDelay,
+      leaveDelay,
+      arrow,
+      onClick,
+      endIcon = false,
+      children
+    } = props;
     return (
       <Tooltip
-        title={AddGoodToBasket}
-        TransitionComponent={Zoom}
-        placement="right"
-        enterDelay={500}
-        leaveDelay={200}
-        arrow
+        title={title}
+        TransitionComponent={transitionComponent}
+        placement={placement}
+        enterDelay={enterDelay}
+        leaveDelay={leaveDelay}
+        arrow={arrow}
       >
         <WrappedComponent
           variant="contained"
-          endIcon={<AddShoppingCartIcon/>}
-          onClick={addItemToBasket}
+          endIcon={endIcon}
+          onClick={onClick}
         >
-          {Buy}
+          {children}
         </WrappedComponent>
       </Tooltip>
     )

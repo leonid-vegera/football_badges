@@ -8,6 +8,7 @@ const Snack = () => {
   return (
     <Snackbar open={isOpenSnackbar} autoHideDuration={3000} onClose={closeSnackbar}>
       <Alert
+        variant='filled'
         severity={snackSeverity}
         onClose={closeSnackbar}
         sx={{ width: '100%' }}

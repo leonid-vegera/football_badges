@@ -1,16 +1,28 @@
 import React, { useContext } from 'react';
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Link, Stack, Typography } from '@mui/material';
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Grid,
+  Link,
+  Stack,
+  Typography,
+  Zoom
+} from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { translate } from '../services/lang/messages';
 import { GoodsContext } from '../services/GoodsProvider';
 import { SnackBarContext } from '../services/SnackBarProvider';
+import withToolTip from '../services/WithToolTip';
 
 const GoodsItem = ({ poster, name, price, id }) => {
   const { addToOrder } = useContext(GoodsContext);
   const { setSnackSeverity, setSnackBarText, setOpenSnackbar } = useContext(SnackBarContext);
 
   const { Hryvna, Price, Buy } = translate('Service');
-  const { AddedToBasket } = translate('Message');
+  const { AddedToBasket, AddGoodToBasket } = translate('Message');
 
   const addItemToBasket = () => {
     addToOrder({
@@ -22,6 +34,8 @@ const GoodsItem = ({ poster, name, price, id }) => {
     setSnackBarText(AddedToBasket);
     setSnackSeverity('success');
   }
+
+  const ButtonWithTooltip = withToolTip(Button);
 
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -46,13 +60,19 @@ const GoodsItem = ({ poster, name, price, id }) => {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button
-              variant="contained"
-              endIcon={<AddShoppingCartIcon/>}
+            <ButtonWithTooltip
+              color='primary'
+              title={AddGoodToBasket}
+              transitionComponent={Zoom}
+              placement='right'
+              enterDelay={1000}
+              leaveDelay={0}
+              arrow={true}
               onClick={addItemToBasket}
             >
               {Buy}
-            </Button>
+              <AddShoppingCartIcon sx={{ ml: 1 }}/>
+            </ButtonWithTooltip>
           </CardActions>
         </Stack>
       </Card>

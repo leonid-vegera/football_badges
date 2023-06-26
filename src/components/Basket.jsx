@@ -1,5 +1,14 @@
 import React, { useContext } from 'react';
-import { Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
+import {
+  Avatar,
+  Divider,
+  Drawer,
+  List,
+  ListItem, ListItemAvatar,
+  ListItemIcon,
+  ListItemText,
+  Typography
+} from '@mui/material';
 import BasketItem from './BasketItem';
 import { ShoppingBasket } from '@mui/icons-material';
 import { translate } from '../services/lang/messages';
@@ -7,7 +16,7 @@ import { GoodsContext } from '../services/GoodsProvider';
 
 const Basket = ({ isOpened, closeCart }) => {
   const { order = [] } = useContext(GoodsContext);
-  const { Basket, Hryvna, TotalPrice } = translate('Service');
+  const { Basket, Hryvna, TotalPrice, AddedGoods } = translate('Service');
   const { BasketIsEmpty } = translate('Message');
 
   return (
@@ -18,10 +27,14 @@ const Basket = ({ isOpened, closeCart }) => {
     >
       <List sx={{ width: '400px', maxWidth: '75vw' }}>
         <ListItem>
-          <ListItemButton>
-            <ShoppingBasket/>
-          </ListItemButton>
-          <ListItemText primary={Basket}/>
+          <ListItemIcon>
+            <ListItemAvatar>
+              <Avatar>
+                <ShoppingBasket/>
+              </Avatar>
+            </ListItemAvatar>
+          </ListItemIcon>
+          <ListItemText primary={Basket} secondary={AddedGoods}/>
         </ListItem>
         <Divider variant="fullWidth"/>
 

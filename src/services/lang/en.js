@@ -21,11 +21,16 @@ const translations = {
     Buy: 'Buy',
     TotalPrice: 'Total price',
     Hryvna: 'grn',
+    AddedGoods: 'Added goods'
   },
   Message: {
     BasketIsEmpty: 'Basket is empty!',
     AddedToBasket: 'Added to the basket!',
     DeletedFromBasket: 'Deleted from the basket!',
+    DeleteFromBasket: 'Press to delete good from the basket',
+    AddGoodToBasket: 'Add good to the basket',
+    ChangeLanguage: 'Press to change language',
+    GoodsInBasket: 'Press to view added goods',
   },
 }
 

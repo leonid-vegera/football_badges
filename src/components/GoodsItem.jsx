@@ -61,16 +61,17 @@ const GoodsItem = ({ poster, name, price, id }) => {
           </CardContent>
           <CardActions>
             <ButtonWithTooltip
+              color='primary'
               title={AddGoodToBasket}
               transitionComponent={Zoom}
               placement='right'
-              enterDelay={500}
+              enterDelay={1000}
               leaveDelay={0}
               arrow={true}
-              endIcon={<AddShoppingCartIcon/>}
               onClick={addItemToBasket}
             >
               {Buy}
+              <AddShoppingCartIcon sx={{ ml: 1 }}/>
             </ButtonWithTooltip>
           </CardActions>
         </Stack>

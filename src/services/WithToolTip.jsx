@@ -3,17 +3,23 @@ import React from 'react';
 
 const withToolTip = (WrappedComponent) => {
 
-  const WithToolTipComponent = (props) => {
+  const WithToolTipComponent = ({ ...props }) => {
     const {
+      children,
       title,
       transitionComponent = Fade,
-      placement,
+      placement = 'bottom',
       enterDelay,
       leaveDelay,
-      arrow,
-      onClick,
-      endIcon = false,
-      children
+      arrow = false,
+      onClick = () => {
+      },
+      onChange = () => {
+      },
+      control = null,
+      checked = false,
+      color = 'inherit',
+      ariaLabel = '',
     } = props;
     return (
       <Tooltip
@@ -26,8 +32,12 @@ const withToolTip = (WrappedComponent) => {
       >
         <WrappedComponent
           variant="contained"
-          endIcon={endIcon}
           onClick={onClick}
+          control={control}
+          checked={checked}
+          onChange={onChange}
+          color={color}
+          aria-label={ariaLabel}
         >
           {children}
         </WrappedComponent>

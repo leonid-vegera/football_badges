@@ -27,7 +27,10 @@ const translations = {
     BasketIsEmpty: 'Корзина пуста!',
     AddedToBasket: 'Товар додано до корзини!',
     DeletedFromBasket: 'Товар видалено з корзини!',
+    DeleteFromBasket: 'Натисніть щоб видалити товар з корзини',
     AddGoodToBasket: 'Додайте товар до корзини',
+    ChangeLanguage: 'Натисніть для зміни мови',
+    GoodsInBasket: 'Натисніть щоб переглянути додані товари',
   },
 }
 

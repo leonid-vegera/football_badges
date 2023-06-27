@@ -14,11 +14,14 @@ import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { translate } from '../services/lang/messages';
 import { GoodsContext } from '../services/GoodsProvider';
+import withToolTip from '../services/WithToolTip';
 
 const Basket = ({ isOpened, closeCart }) => {
   const { order = [] } = useContext(GoodsContext);
   const { Basket, TotalPrice, AddedGoods } = translate('Service');
-  const { BasketIsEmpty } = translate('Message');
+  const { BasketIsEmpty, CloseBasket } = translate('Message');
+
+  const CloseButtonWithTooltip = withToolTip(ListItemIcon);
 
   return (
     <Drawer
@@ -43,11 +46,15 @@ const Basket = ({ isOpened, closeCart }) => {
             }
             secondary={AddedGoods}
           />
-          <ListItemIcon onClick={closeCart}>
+          <CloseButtonWithTooltip
+            onClick={closeCart}
+            title={CloseBasket}
+            placement='bottom-start'
+          >
             <IconButton>
               <CloseOutlinedIcon/>
             </IconButton>
-          </ListItemIcon>
+          </CloseButtonWithTooltip>
         </ListItem>
         <Divider variant="fullWidth"/>
 

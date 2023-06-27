@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AppBar, FormControlLabel, IconButton, Toolbar, Typography, Zoom } from '@mui/material';
+import { AppBar, FormControlLabel, IconButton, Toolbar, Typography } from '@mui/material';
 import { ShoppingCart, SportsSoccer as SportsSoccerIcon } from '@mui/icons-material';
 import Badge from '@mui/material/Badge';
 import LanguageSwitch from './LanguageSwitch';
@@ -34,22 +34,13 @@ const Header = ({ openCart }) => {
         </Typography>
         <LanguageLabelWithTooltip
           title={ChangeLanguage}
-          transitionComponent={Zoom}
-          placement='bottom'
-          enterDelay={500}
-          leaveDelay={0}
-          arrow={true}
           control={<LanguageSwitch sx={{ m: 1 }}/>}
           checked={language === 'ua'}
           onChange={handleLangChange}
         />
         <BasketLabelWithTooltip
           title={GoodsInBasket}
-          transitionComponent={Zoom}
           placement='bottom-start'
-          enterDelay={500}
-          leaveDelay={0}
-          arrow={true}
           color='inherit'
           onClick={openCart}
         >

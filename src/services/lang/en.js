@@ -27,10 +27,11 @@ const translations = {
     BasketIsEmpty: 'Basket is empty!',
     AddedToBasket: 'Added to the basket!',
     DeletedFromBasket: 'Deleted from the basket!',
-    DeleteFromBasket: 'Press to delete good from the basket',
+    DeleteFromBasket: 'Delete item',
     AddGoodToBasket: 'Add good to the basket',
-    ChangeLanguage: 'Press to change language',
-    GoodsInBasket: 'Press to view added goods',
+    ChangeLanguage: 'Сhange language',
+    GoodsInBasket: 'View added goods',
+    CloseBasket: 'Close basket',
   },
 }
 

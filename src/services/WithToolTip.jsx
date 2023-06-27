@@ -1,4 +1,4 @@
-import { Fade, Tooltip } from '@mui/material';
+import { Tooltip, Zoom } from '@mui/material';
 import React from 'react';
 
 const withToolTip = (WrappedComponent) => {
@@ -7,11 +7,11 @@ const withToolTip = (WrappedComponent) => {
     const {
       children,
       title,
-      transitionComponent = Fade,
+      transitionComponent = Zoom,
       placement = 'bottom',
-      enterDelay,
-      leaveDelay,
-      arrow = false,
+      enterDelay = 1000,
+      leaveDelay = 0,
+      arrow = true,
       onClick = () => {
       },
       onChange = () => {

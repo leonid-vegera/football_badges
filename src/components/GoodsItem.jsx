@@ -9,7 +9,6 @@ import {
   Link,
   Stack,
   Typography,
-  Zoom
 } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { translate } from '../services/lang/messages';
@@ -29,6 +28,7 @@ const GoodsItem = ({ poster, name, price, id }) => {
       id: id,
       name: name,
       price: price,
+      poster: poster,
     });
     setOpenSnackbar(true)
     setSnackBarText(AddedToBasket);
@@ -63,11 +63,7 @@ const GoodsItem = ({ poster, name, price, id }) => {
             <ButtonWithTooltip
               color='primary'
               title={AddGoodToBasket}
-              transitionComponent={Zoom}
               placement='right'
-              enterDelay={1000}
-              leaveDelay={0}
-              arrow={true}
               onClick={addItemToBasket}
             >
               {Buy}

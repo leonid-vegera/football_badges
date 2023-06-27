@@ -1,12 +1,20 @@
 import React, { useContext } from 'react';
-import { IconButton, ListItem, Stack, Typography, Zoom } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import {
+  Avatar,
+  IconButton,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+  Zoom
+} from '@mui/material';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { translate } from '../services/lang/messages';
 import { GoodsContext } from '../services/GoodsProvider';
 import { SnackBarContext } from '../services/SnackBarProvider';
 import withToolTip from '../services/WithToolTip';
 
-const BasketItem = ({ name, price, id, quantity, }) => {
+const BasketItem = ({ name, price, id, quantity, poster }) => {
   const { removeFromOrder } = useContext(GoodsContext);
   const { setSnackSeverity, setOpenSnackbar, setSnackBarText } = useContext(SnackBarContext);
 
@@ -24,23 +32,40 @@ const BasketItem = ({ name, price, id, quantity, }) => {
 
   return (
     <ListItem>
-      <Stack direction='row' justifyContent='space-between' alignItems='center' width='100%'>
-        <Typography variant="body1">
-          {name} {price} {Hryvna} x {quantity}
-        </Typography>
-        <DeleteButtonWithTooltip
-          title={DeleteFromBasket}
-          transitionComponent={Zoom}
-          placement='bottom-start'
-          enterDelay={500}
-          leaveDelay={0}
-          arrow={true}
-          onClick={deleteItemHandle}
-          ariaLabel="delete"
-        >
-          <DeleteIcon/>
-        </DeleteButtonWithTooltip>
-      </Stack>
+      <ListItemAvatar>
+        <Avatar alt={name} src={poster}/>
+      </ListItemAvatar>
+      <ListItemText
+        primary={name}
+        secondary={
+          <React.Fragment>
+            <Typography
+              sx={{ display: 'inline' }}
+              component="span"
+              variant="body2"
+              color="text.primary"
+            >
+              {price} {Hryvna} x {quantity} {' = '}
+            </Typography>
+            <Typography variant="body2" component="span" fontWeight='700'>
+              {price * quantity} {'\u20B4'}
+            </Typography>
+          </React.Fragment>
+        }
+        sx={{ pr: 1 }}
+      />
+      <DeleteButtonWithTooltip
+        title={DeleteFromBasket}
+        transitionComponent={Zoom}
+        placement='bottom-start'
+        enterDelay={500}
+        leaveDelay={0}
+        arrow={true}
+        onClick={deleteItemHandle}
+        ariaLabel="delete"
+      >
+        <DeleteOutlineIcon/>
+      </DeleteButtonWithTooltip>
     </ListItem>
   );
 };

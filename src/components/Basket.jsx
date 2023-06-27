@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import {
   Avatar,
   Divider,
-  Drawer,
+  Drawer, IconButton,
   List,
   ListItem, ListItemAvatar,
   ListItemIcon,
@@ -10,13 +10,14 @@ import {
   Typography
 } from '@mui/material';
 import BasketItem from './BasketItem';
-import { ShoppingBasket } from '@mui/icons-material';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { translate } from '../services/lang/messages';
 import { GoodsContext } from '../services/GoodsProvider';
 
 const Basket = ({ isOpened, closeCart }) => {
   const { order = [] } = useContext(GoodsContext);
-  const { Basket, Hryvna, TotalPrice, AddedGoods } = translate('Service');
+  const { Basket, TotalPrice, AddedGoods } = translate('Service');
   const { BasketIsEmpty } = translate('Message');
 
   return (
@@ -30,11 +31,23 @@ const Basket = ({ isOpened, closeCart }) => {
           <ListItemIcon>
             <ListItemAvatar>
               <Avatar>
-                <ShoppingBasket/>
+                <SportsSoccerIcon/>
               </Avatar>
             </ListItemAvatar>
           </ListItemIcon>
-          <ListItemText primary={Basket} secondary={AddedGoods}/>
+          <ListItemText
+            primary={
+              <Typography fontWeight='500'>
+                {Basket}
+              </Typography>
+            }
+            secondary={AddedGoods}
+          />
+          <ListItemIcon onClick={closeCart}>
+            <IconButton>
+              <CloseOutlinedIcon/>
+            </IconButton>
+          </ListItemIcon>
         </ListItem>
         <Divider variant="fullWidth"/>
 
@@ -43,10 +56,12 @@ const Basket = ({ isOpened, closeCart }) => {
         ) : (
           <>
             {order.map((item, index) => (
-              <BasketItem
-                key={index}
-                {...item}
-              />
+              <React.Fragment key={index}>
+                {index > 0 && <Divider variant="inset" component="li"/>}
+                <BasketItem
+                  {...item}
+                />
+              </React.Fragment>
             ))}
             <Divider variant="fullWidth"/>
             <ListItem sx={{ my: 2 }}>
@@ -55,7 +70,7 @@ const Basket = ({ isOpened, closeCart }) => {
                 {order.reduce((acc, item) => {
                   return acc + item.price * item.quantity;
                 }, 0)}{' '}
-                {Hryvna}.
+                {'\u20B4'}.
               </Typography>
             </ListItem>
           </>

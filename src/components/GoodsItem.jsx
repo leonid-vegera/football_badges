@@ -29,6 +29,7 @@ const GoodsItem = ({ poster, name, price, id }) => {
       id: id,
       name: name,
       price: price,
+      poster: poster,
     });
     setOpenSnackbar(true)
     setSnackBarText(AddedToBasket);

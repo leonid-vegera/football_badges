@@ -28,6 +28,7 @@ export const GoodsProvider = ({ children }) => {
             id: item.id,
             name: item.name,
             price: item.price,
+            poster: item.poster,
             quantity,
           };
         }),
@@ -39,6 +40,7 @@ export const GoodsProvider = ({ children }) => {
             id: goodsItem.id,
             name: goodsItem.name,
             price: goodsItem.price,
+            poster: goodsItem.poster,
             quantity,
           },
         ],

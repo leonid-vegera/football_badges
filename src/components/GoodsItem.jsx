@@ -12,13 +12,14 @@ import {
 } from '@mui/material';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { translate } from '../services/lang/messages';
-import { GoodsContext } from '../services/GoodsProvider';
-import { SnackBarContext } from '../services/SnackBarProvider';
 import withToolTip from '../services/WithToolTip';
+import { DispatchContext, StateContext } from '../services/StateContext';
+import { actionTypes } from '../services/actionTypes';
 
 const GoodsItem = ({ poster, name, price, id }) => {
-  const { addToOrder } = useContext(GoodsContext);
-  const { setSnackSeverity, setSnackBarText, setOpenSnackbar } = useContext(SnackBarContext);
+  const { order } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext) || (() => {
+  });
 
   const { Hryvna, Price, Buy } = translate('Service');
   const { AddedToBasket, AddGoodToBasket } = translate('Message');
@@ -30,10 +31,56 @@ const GoodsItem = ({ poster, name, price, id }) => {
       price: price,
       poster: poster,
     });
-    setOpenSnackbar(true)
-    setSnackBarText(AddedToBasket);
-    setSnackSeverity('success');
+    dispatch({ type: actionTypes.OPEN_SNACKBAR, payload: true })
+    dispatch({ type: actionTypes.SNACKBAR_TEXT, payload: AddedToBasket })
+    dispatch({ type: actionTypes.SNACKBAR_SEVERITY, payload: 'success' })
   }
+
+  const addToOrder = (goodsItem) => {
+    let quantity = 1;
+
+    const indexInOrder = order.findIndex(
+      (item) => item.id === goodsItem.id
+    );
+
+    if (indexInOrder > -1) {
+      quantity = order[indexInOrder].quantity + 1;
+
+      dispatch({
+          type: actionTypes.ADD_TO_ORDER, payload: (
+            order.map((item) => {
+              if (item.id !== goodsItem.id) {
+                return item;
+              }
+
+              return {
+                id: item.id,
+                name: item.name,
+                price: item.price,
+                poster: item.poster,
+                quantity,
+              };
+            })
+          )
+        }
+      );
+    } else {
+      dispatch({
+        type: actionTypes.ADD_TO_ORDER, payload: (
+          [
+            ...order,
+            {
+              id: goodsItem.id,
+              name: goodsItem.name,
+              price: goodsItem.price,
+              poster: goodsItem.poster,
+              quantity,
+            },
+          ]
+        )
+      });
+    }
+  };
 
   const ButtonWithTooltip = withToolTip(Button);
 

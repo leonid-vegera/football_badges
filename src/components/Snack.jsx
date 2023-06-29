@@ -1,9 +1,22 @@
 import React, { useContext } from 'react';
 import { Alert, Snackbar } from '@mui/material';
-import { SnackBarContext } from '../services/SnackBarProvider';
+import { translate } from '../services/lang/messages';
+import { DispatchContext, StateContext } from '../services/StateContext';
+import { actionTypes } from '../services/actionTypes';
 
 const Snack = () => {
-  const { closeSnackbar, isOpenSnackbar, snackBarText, snackSeverity } = useContext(SnackBarContext);
+  const { isOpenSnackbar, snackBarText, snackSeverity } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext) || (() => {
+  });
+  const { Buy } = translate('Service');
+
+
+  const closeSnackbar = (event) => {
+    if (event && event.target.textContent === Buy) {
+      return;
+    }
+    dispatch({ type: actionTypes.OPEN_SNACKBAR, payload: false })
+  }
 
   return (
     <Snackbar open={isOpenSnackbar} autoHideDuration={3000} onClose={closeSnackbar}>

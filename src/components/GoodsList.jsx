@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import GoodsItem from './GoodsItem';
 import { Grid } from '@mui/material';
-import { GoodsContext } from '../services/GoodsProvider';
+import { StateContext } from '../services/StateContext';
 
 const GoodsList = () => {
-  const { preparedGoods } = useContext(GoodsContext);
+  const { preparedGoods } = useContext(StateContext);
 
   return (
     <Grid

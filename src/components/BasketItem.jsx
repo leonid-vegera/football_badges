@@ -10,24 +10,34 @@ import {
 } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { translate } from '../services/lang/messages';
-import { GoodsContext } from '../services/GoodsProvider';
-import { SnackBarContext } from '../services/SnackBarProvider';
 import withToolTip from '../services/WithToolTip';
+import { DispatchContext, StateContext } from '../services/StateContext';
+import { actionTypes } from '../services/actionTypes';
 
 const BasketItem = ({ name, price, id, quantity, poster }) => {
-  const { removeFromOrder } = useContext(GoodsContext);
-  const { setSnackSeverity, setOpenSnackbar, setSnackBarText } = useContext(SnackBarContext);
+  const { order, setOrder } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext) || (() => {
+  });
 
   const { Hryvna } = translate('Service');
   const { DeletedFromBasket, DeleteFromBasket } = translate('Message');
 
   const DeleteButtonWithTooltip = withToolTip(IconButton);
 
+  const removeFromOrder = (goodsItem) => {
+    setOrder(order.filter((item) => item.id !== goodsItem));
+    dispatch({
+      type: actionTypes.ADD_TO_ORDER, payload: (
+        order.filter((item) => item.id !== goodsItem)
+      )
+    })
+  };
+
   const deleteItemHandle = () => {
     removeFromOrder(id);
-    setOpenSnackbar(true);
-    setSnackBarText(DeletedFromBasket);
-    setSnackSeverity('warning');
+    dispatch({ type: actionTypes.OPEN_SNACKBAR, payload: true })
+    dispatch({ type: actionTypes.SNACKBAR_TEXT, payload: DeletedFromBasket })
+    dispatch({ type: actionTypes.SNACKBAR_SEVERITY, payload: 'warning' })
   }
 
   return (

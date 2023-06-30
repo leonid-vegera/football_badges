@@ -10,19 +10,15 @@ import { Box, Container } from '@mui/material';
 import Basket from './components/Basket';
 import Snack from './components/Snack';
 import { translate } from './services/lang/messages';
-import { LangContext } from './services/LangProvider';
-import { GoodsContext } from './services/GoodsProvider';
+import { DispatchContext, StateContext } from './services/StateContext';
 
 const App = () => {
   const [search, setSearch] = useState('');
   const [isOpenCart, setOpenCart] = useState(false);
 
-  const { language } = useContext(LangContext);
-  const {
-    translatedGoods,
-    setTranslatedGoods,
-    setPreparedGoods
-  } = useContext(GoodsContext);
+  const { language, translatedGoods } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext) || (() => {
+  });
 
   useEffect(() => {
     const translations = translate('Description');
@@ -33,22 +29,25 @@ const App = () => {
       name: translations[keys[index + 1]],
     }));
 
-    setPreparedGoods(updatedGoods);
-    setTranslatedGoods(updatedGoods);
+    dispatch({ type: 'SET_PREPARED', payload: updatedGoods })
+    dispatch({ type: 'SET_TRANSLATED', payload: updatedGoods })
   }, [language]);
 
   const handleChange = (e) => {
     if (!e.target.value) {
-      setPreparedGoods(translatedGoods);
+      dispatch({ type: 'SET_PREPARED', payload: translatedGoods });
       setSearch('');
       return;
     }
 
     setSearch(e.target.value);
-    setPreparedGoods(
-      translatedGoods.filter((good) =>
-        good.name.toLowerCase().includes(e.target.value.toLowerCase())
-      ))
+    dispatch({
+      type: 'SET_PREPARED', payload: (
+        translatedGoods.filter((good) =>
+          good.name.toLowerCase().includes(e.target.value.toLowerCase())
+        )
+      )
+    });
   };
 
   return (

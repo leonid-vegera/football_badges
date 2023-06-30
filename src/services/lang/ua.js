@@ -2,7 +2,7 @@ const translations = {
   Description: {
     FootballBadges: 'Футбольні значки',
     HunterTompson: 'Хантер Томпсон підтримує Динамо',
-    ACAB: 'ACAB. Стиль Пепсі',
+    ACAB: 'АКАБ. Стиль Пепсі',
     DonaldDuck: 'Качка Дональд підтримує киян',
     DynamoKit: 'Ігрова форма Динамо Київ',
     Lazio: 'Лаціо Рим',

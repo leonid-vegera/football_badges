@@ -13,11 +13,11 @@ import BasketItem from './BasketItem';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import { translate } from '../services/lang/messages';
-import { GoodsContext } from '../services/GoodsProvider';
 import withToolTip from '../services/WithToolTip';
+import { StateContext } from '../services/StateContext';
 
 const Basket = ({ isOpened, closeCart }) => {
-  const { order = [] } = useContext(GoodsContext);
+  const { order = [] } = useContext(StateContext);
   const { Basket, TotalPrice, AddedGoods } = translate('Service');
   const { BasketIsEmpty, CloseBasket } = translate('Message');
 

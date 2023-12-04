@@ -1,7 +1,7 @@
 {
   "main.css": "/material_ui_research/static/css/main.dbb9c7bc.chunk.css",
-  "main.js": "/material_ui_research/static/js/main.bf926b35.chunk.js",
-  "main.js.map": "/material_ui_research/static/js/main.bf926b35.chunk.js.map",
+  "main.js": "/material_ui_research/static/js/main.64818d5a.chunk.js",
+  "main.js.map": "/material_ui_research/static/js/main.64818d5a.chunk.js.map",
   "static/js/1.b6af3f04.chunk.js": "/material_ui_research/static/js/1.b6af3f04.chunk.js",
   "static/js/1.b6af3f04.chunk.js.map": "/material_ui_research/static/js/1.b6af3f04.chunk.js.map",
   "static/js/2.dffd9961.chunk.js": "/material_ui_research/static/js/2.dffd9961.chunk.js",
@@ -12,6 +12,6 @@
   "runtime~main.js.map": "/material_ui_research/static/js/runtime~main.78842da8.js.map",
   "static/css/main.dbb9c7bc.chunk.css.map": "/material_ui_research/static/css/main.dbb9c7bc.chunk.css.map",
   "index.html": "/material_ui_research/index.html",
-  "precache-manifest.c2646705589bb167b137f752e560bd78.js": "/material_ui_research/precache-manifest.c2646705589bb167b137f752e560bd78.js",
+  "precache-manifest.0e4ec61f2822dbc9d84f8adca5037c0b.js": "/material_ui_research/precache-manifest.0e4ec61f2822dbc9d84f8adca5037c0b.js",
   "service-worker.js": "/material_ui_research/service-worker.js"
 }

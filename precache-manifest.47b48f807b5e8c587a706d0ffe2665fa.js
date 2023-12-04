@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/material_ui_research/static/js/runtime~main.b45e4944.js"
   },
   {
-    "revision": "f1f820015deed003add9a75a88d7388c",
+    "revision": "9a0376fb048e57c0a1bdee2dc975c18a",
     "url": "/material_ui_research/index.html"
   }
 ];
